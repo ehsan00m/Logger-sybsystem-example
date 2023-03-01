@@ -1,6 +1,6 @@
 set(LIBRARY_NAME LOG_LIB)
 set(LIBRARY_SOURCES
-    "")
+    "log.c")
 set(LIBRARY_HEADERS
     "./inc")
 
