@@ -61,5 +61,10 @@ void log_setLogLevel(log_logLevel_t level)
     log_settings.system_log_level = level;
 }
 
+void log_setLogState(log_loggingState_t enable)
+{
+    log_settings.enable = enable;
+}
+
 
 
