@@ -62,6 +62,7 @@ void log_setLogState(log_loggingState_t enable);
 /**
  * @brief Logs a message to stderr.
  *        Calls the callback if registered.
+ *        No need to put "\n" at the end of the messege.
  * 
  * @param level 
  * @param func_name 

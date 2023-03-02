@@ -23,14 +23,14 @@ static struct log log_settings =
     .cb.level = LOG_LEVEL_INFO
 };
 
-static const char * log_level_strings[] ={"[DEBUG]",
-                                          "[INFO]",
-                                          "[WARNING]",
-                                          "[ERROR]",
-                                          "[CRITICAL]"};
+static const char * log_level_strings[] ={"DEBUG",
+                                          "INFO",
+                                          "WARNING",
+                                          "ERROR",
+                                          "CRITICAL"};
 
 
-static const char * log_getLevelSting (log_logLevel_t level)
+static const char * getLevelString (log_logLevel_t level)
 {
     switch (level)
     {
@@ -66,5 +66,25 @@ void log_setLogState(log_loggingState_t enable)
     log_settings.enable = enable;
 }
 
+// [level][func_name]:  
+static void printLog(log_logLevel_t level, const char * const func_name, const char * const format, va_list args)
+{
+    // [level][func_name]:
+    fprintf(
+    stderr, " [%s] [%s]:",  
+    getLevelString(level), func_name);
+    vfprintf(stderr, format, args);
+    fprintf(stderr, "\n");
+    fflush(stderr);
+}
 
+void log_log(log_logLevel_t level, const char * const func_name, const char * const format, ... )
+{
+    va_list args;
+    if ((log_settings.enable != LOG_DISABLE) && (log_settings.system_log_level >= level)) {
+    va_start(args, format);
+    printLog(level,func_name,format,args);
+    va_end(args);
+  }
+}
 
