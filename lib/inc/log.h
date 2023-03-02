@@ -21,9 +21,18 @@ typedef enum
     LOG_ENABLE
 }log_loggingState_t;
 
+
+#define LOG_DEBUG(format, ... )    log_log(LOG_LEVEL_DEBUG, __FUNCTION__, format, ## __VA_ARGS__)
+#define LOG_INFO(format, ... )     log_log(LOG_LEVEL_INFO, __FUNCTION__, format, ## __VA_ARGS__)
+#define LOG_WARN(format, ... )     log_log(LOG_LEVEL_WARN, __FUNCTION__, format, ## __VA_ARGS__)
+#define LOG_ERROR(format, ... )    log_log(LOG_LEVEL_ERROR, __FUNCTION__, format, ## __VA_ARGS__)
+#define LOG_CRITICAL(format, ... ) log_log(LOG_LEVEL_CRITICAL, __FUNCTION__, format, ## __VA_ARGS__)
+
+
 /**
- * @brief 
  * 
+ * @brief 
+ * @note don't call log functions inside the callback.
  */
 typedef void (*log_writeFn)(log_logLevel_t level,
                             const char * const func_name,
@@ -49,6 +58,14 @@ int log_registerCallback(log_writeFn func, log_logLevel_t cb_level);
  * @param level 
  */
 void log_setLogLevel(log_logLevel_t level);
+
+/**
+ * @brief returns corresponding level string.
+ * 
+ * @param level 
+ * @return const char* 
+ */
+const char * log_getLevelString (log_logLevel_t level);
 
 /**
  * @brief Enable or disable the logging system.
