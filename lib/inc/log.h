@@ -71,7 +71,7 @@ void log_setLogState(log_loggingState_t enable);
 void log_log(log_logLevel_t level,
              const char * const func_name,
              const char * const format,
-             va_list args);
+              ... );
 
 #ifdef __cplusplus
 }
