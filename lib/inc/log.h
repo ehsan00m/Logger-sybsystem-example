@@ -30,8 +30,7 @@ typedef enum
 
 
 /**
- * 
- * @brief 
+ * @brief The callback can be used for example to store log messeges into a file.
  * @note don't call log functions inside the callback.
  */
 typedef void (*log_writeFn)(log_logLevel_t level,
