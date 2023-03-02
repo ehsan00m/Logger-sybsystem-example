@@ -65,6 +65,7 @@ int main (int argc , char ** argv)
     logTestWarnLvl();
     logTestErrorLvl();
     logTestCriticalLvl();
-
+    
+    closeLogFile();
     return 0;
 }
