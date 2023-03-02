@@ -62,6 +62,11 @@ void log_setLogState(log_loggingState_t enable);
 /**
  * @brief Logs a message to stderr.
  *        Calls the callback if registered.
+ * 
+ * @param level 
+ * @param func_name 
+ * @param format 
+ * @param args 
  */
 void log_log(log_logLevel_t level,
              const char * const func_name,
