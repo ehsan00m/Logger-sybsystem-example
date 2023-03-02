@@ -81,10 +81,11 @@ static void printLog(log_logLevel_t level, const char * const func_name, const c
 void log_log(log_logLevel_t level, const char * const func_name, const char * const format, ... )
 {
     va_list args;
-    if ((log_settings.enable != LOG_DISABLE) && (log_settings.system_log_level >= level)) {
+    if ((log_settings.enable != LOG_DISABLE) && (log_settings.system_log_level >= level)) 
+    {
     va_start(args, format);
     printLog(level,func_name,format,args);
     va_end(args);
-  }
+    }
 }
 
